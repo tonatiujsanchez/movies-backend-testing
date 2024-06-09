@@ -7,7 +7,7 @@ Movie.belongsToMany(Genre, { through: 'movieGenres' })
 Genre.belongsToMany(Movie, { through: 'movieGenres' })
 
 Movie.belongsToMany(Actor, { through: 'movieActors' })
-Genre.belongsToMany(Movie, { through: 'movieActors' })
+Actor.belongsToMany(Movie, { through: 'movieActors' })
 
 Movie.belongsToMany(Director, { through: 'movieDirectors' })
 Director.belongsToMany(Movie, { through: 'movieDirectors' })
