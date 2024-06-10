@@ -6,7 +6,7 @@ Este proyecto es una API RESTful para una aplicación de películas que permite 
 
 ## Descripción
 
-La API permite gestionar gestionar géneros, actores, directores y películas mediante los siguientes endpoints:
+La API permite gestionar gestionar los recursos mediante los siguientes endpoints:
 
 ### movies
 - **GET /movies**: Obtiene todos las películas.
