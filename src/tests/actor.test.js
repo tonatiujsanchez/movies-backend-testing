@@ -40,6 +40,7 @@ test('POST => "BASE_URL" should return status code 201 and res.body.firstName ==
 
 
 test('GET => "BASE_URL" should return status code 200 and res.body[0].firstName === actor.firstName', async()=> {
+
     const res = await request(app)
         .get(BASE_URL)
 
@@ -50,11 +51,22 @@ test('GET => "BASE_URL" should return status code 200 and res.body[0].firstName 
 })
 
 
+test('GET => "BASE_URL/:id" should return status code 200 and res.body.firstName === actor.firstName', async() => {
+    
+    const res = await request(app)
+        .get(`${ BASE_URL }/${ actorId }`)
+
+    expect(res.statusCode).toBe(200)
+    expect(res.body).toBeDefined()
+    expect(res.body.firstName).toBe(actor.firstName)
+})
+
+
 test('PUT => "BASE_URL/:id" should return status code 200 and res.body.firstName === actorUpdate.firstName ', async() => {
 
     const res = await request(app)
-    .put(`${ BASE_URL }/${ actorId }`)
-    .send(actorUpdate)
+        .put(`${ BASE_URL }/${ actorId }`)
+        .send(actorUpdate)
 
     expect(res.statusCode).toBe(200)
     expect(res.body).toBeDefined()
@@ -63,6 +75,7 @@ test('PUT => "BASE_URL/:id" should return status code 200 and res.body.firstName
 
 
 test('DELETE => "BASE_URL/:id" should return status code 204', async()=> {
+
     const res = await request(app)
         .delete(`${ BASE_URL }/${ actorId }`)
     

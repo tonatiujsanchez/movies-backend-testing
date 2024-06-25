@@ -34,7 +34,7 @@ afterAll(async()=>{
 
 
 // ===== ===== Definition of the tests ===== =====
-test('POST => "BASE_URL" should return status code 201 and res.body.firstName === movie.firstName', async() => {
+test('POST => "BASE_URL" should return status code 201 and res.body.name === movie.name', async() => {
 
     const res = await request(app)
         .post(BASE_URL)
@@ -60,7 +60,18 @@ test('GET => "BASE_URL" should return status code 200 and res.body[0].name === m
 })
 
 
-test('PUT => "BASE_URL/:id" should return status code 200 and res.body.movie === movieUpdate.name ', async() => {
+test('GET => "BASE_URL/:id" should return status code 200 and res.body.name === movie.name', async() => {
+    
+    const res = await request(app)
+        .get(`${ BASE_URL }/${ movieId }`)
+
+    expect(res.statusCode).toBe(200)
+    expect(res.body).toBeDefined()
+    expect(res.body.name).toBe(movie.name)
+})
+
+
+test('PUT => "BASE_URL/:id" should return status code 200 and res.body.name === movieUpdate.name ', async() => {
 
     const res = await request(app)
     .put(`${ BASE_URL }/${ movieId }`)
@@ -72,7 +83,7 @@ test('PUT => "BASE_URL/:id" should return status code 200 and res.body.movie ===
 })
 
 
-test('POST => /:id/genres return status code 200 and res.body[0].movieActors.actorId === actor.id', async()=> {
+test('POST => /:id/actors return status code 200 and res.body[0].movieActors.actorId === actor.id', async()=> {
 
     actor = await Actor.create({
         firstName: 'Donnie Yen',
@@ -95,7 +106,7 @@ test('POST => /:id/genres return status code 200 and res.body[0].movieActors.act
 
 })
 
-test('POST => /:id/directors return status code 200 and res.body[0].movieDirectors.actorId === director.id', async()=> {
+test('POST => /:id/directors return status code 200 and res.body[0].movieDirectors.directorId === director.id', async()=> {
 
     director = await Director.create({
         firstName: 'Gillermo',
@@ -118,7 +129,7 @@ test('POST => /:id/directors return status code 200 and res.body[0].movieDirecto
 
 })
 
-test('POST => /:id/genre return status code 200 and res.body[0].movieGenres.genreId === genre.id', async()=> {
+test('POST => /:id/genres return status code 200 and res.body[0].movieGenres.genreId === genre.id', async()=> {
 
     genre = await Genre.create({
         name: 'Action',
