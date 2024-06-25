@@ -1,12 +1,12 @@
-# MOVIES API
+# MOVIES API + TESTING
 
-Este proyecto es una API RESTful para una aplicación de películas que permite gestionar géneros, actores, directores y películas a través de varios endpoints.
+Este proyecto es una API RESTful para una aplicación de películas que permite gestionar géneros, actores, directores y películas a través de varios endpoints a los cuales a todos se le implemento testing son Jest y Supertest.
 
 [![API de Películas](/public/movies_api.webp)](https://movies-ts.netlify.app)
 
 ## Descripción
 
-La API permite gestionar gestionar los recursos mediante los siguientes endpoints:
+Endpoints a los cuales de le implementaron testing:
 
 ### movies
 - **GET /movies**: Obtiene todos las películas.
@@ -14,6 +14,9 @@ La API permite gestionar gestionar los recursos mediante los siguientes endpoint
 - **GET /movies/:id**: Obtiene una película por ID.
 - **PUT /movies/:id**: Actualiza una película por ID.
 - **DELETE /movies/:id**: Elimina una película por ID.
+- **POST /movies/:id/actors**: Asignar actores a una película.
+- **POST /movies/:id/directors**: Asignar directores a una película.
+- **POST /movies/:id/genres**: Asignar géneros a una película.
 
 ### genres
 - **GET /genres**: Obtiene todos los géneros.
@@ -42,8 +45,10 @@ La API permite gestionar gestionar los recursos mediante los siguientes endpoint
 - Express
 - PostgreSQL
 - Sequelize
+- jest
+- supertest
 
-## Ejecución local
+## Ejecución local y testing
 
 __Requisitos Previos__
 
@@ -56,12 +61,12 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 
 1. **Clona el repositorio:** Ejecuta el siguiente comando en tu terminal para clonar este repositorio en tu máquina local:
 ```
-git clone https://github.com/tonatiujsanchez/movies-backend.git
+git clone https://github.com/tonatiujsanchez/movies-backend-testing.git
 ```
 
 2. **Abre el proyecto:** Navega hasta la carpeta del proyecto clonado
 ```
-cd movies-backend
+cd movies-backend-testing
 ```
 
 3. **Instala la dependencias:** Ejecuta el siguiente comando para instalar los node_modules:
@@ -90,15 +95,10 @@ DATABASE_URL=postgres://postgres:<password>@127.0.0.1:5432/<nombre_db>
 npm run dev
 ```
 
-7. **Explora:** ¡Explora y diviértete creando, editando y eliminando usuarios!
-
-
-## URL's
-
-- [Ducumentación de la API en Postman](https://documenter.getpostman.com/view/3730299/2sA3XLGQHJ)
-- [API desplegada en render.com](https://movies-ts.onrender.com)
-- [Frontend desplegado en Netlify](https://movies-ts.netlify.app)
-- [Repositorio del Frontend](https://github.com/tonatiujsanchez/movies-frontend.git)
+**Para ejecutar los tests:** Termina el servidor local y ejecuta el siguiente comando
+```
+npm run test
+```
 
 
 
